@@ -32,12 +32,7 @@ main {
     
     
 }
-.calculator-div{
-    justify-content: center;
-    align-items: center;
-    
-    background-color: yellow;
-}
+
 
 .link-index {
 
@@ -91,6 +86,7 @@ td {
     padding: 20px;
     overflow-y: auto;
     transition: padding 0.5s;
+    text-align: center;
     /* Add a smooth transition effect */
 }
 
@@ -151,9 +147,14 @@ button {
     display: none;
 }
 
+
+
+
+
 footer {
     background-color: #333;
     color: white;
     text-align: center;
     padding: 10px;
+    
 }

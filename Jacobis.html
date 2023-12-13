@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jacobi's Method Solver</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #app {
+            text-align: center;
+        }
+
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #innerStep {
+            border: 1px;
+            border-radius: 10px;
+            background-color: cadetblue;
+            color: rgb(8, 8, 8);
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        #solutions {
+            border: 1px;
+            border-radius: 20px;
+            background-color: rgb(160, 121, 95);
+            color: rgb(8, 8, 8);
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <h2>Jacobi's Method Solver</h2>
+        <p>Enter the number of equations:</p>
+        <input type="text" id="equationCount" placeholder="Enter the number of equations">
+        <button onclick="createMatrixInput()">Go</button>
+
+        <div id="matrixContainer">
+            <!-- Matrix input fields will be dynamically added here using JavaScript -->
+        </div>
+
+        <button onclick="solve()">Solve</button>
+
+        <h3>Solutions:</h3>
+        <div id="innerStep"></div>
+        <div id="solutions"></div>
+    </div>
+
+    <script>
+        function createMatrixInput() {
+            const equationCountInput = document.getElementById('equationCount');
+            const n = parseInt(equationCountInput.value);
+            if (isNaN(n) || n <= 0) {
+                alert('Please enter a valid number of equations.');
+                return;
+            }
+
+            const matrixContainer = document.getElementById('matrixContainer');
+            matrixContainer.innerHTML = '';
+
+            const table = document.createElement('table');
+            table.id = 'matrixInput';
+
+            for (let i = 0; i < n; i++) {
+                const row = document.createElement('tr');
+                for (let j = 0; j <= n; j++) {
+                    const cell = document.createElement('td');
+                    const input = document.createElement('input');
+                    input.type = 'number';
+                    input.step = 'any';
+                    input.placeholder = `Element ${i + 1}${j + 1}`;
+                    cell.appendChild(input);
+                    row.appendChild(cell);
+                }
+                table.appendChild(row);
+            }
+
+            matrixContainer.appendChild(table);
+        }
+
+        function jacobiMethod(matrix, n, iterations) {
+            const stepDiv = document.getElementById('innerStep');
+            stepDiv.innerHTML = ''; // Clear previous content
+
+            let x = new Array(n).fill(0);
+
+            for (let iteration = 0; iteration < iterations; iteration++) {
+                stepDiv.innerHTML += `Iteration ${iteration + 1}: `;
+                let newX = new Array(n);
+
+                for (let i = 0; i < n; i++) {
+                    let sum = matrix[i][n];
+                    for (let j = 0; j < n; j++) {
+                        if (i !== j) {
+                            sum -= matrix[i][j] * x[j];
+                        }
+                    }
+                    newX[i] = sum / matrix[i][i];
+                    stepDiv.innerHTML += `x${i + 1} = ${newX[i].toFixed(4)} `;
+                }
+
+                stepDiv.innerHTML += `<br>`;
+                let cnt = 0;
+                for(let i = 0; i< n; i++){
+                    console.log(`${newX[i]} `);
+                    if(abs(x[i] - newX[i]) < 0.001){
+                        cnt++;
+                    }
+                }
+                console.log(`\n`);
+                
+                x = [...newX];
+                if(cnt == n){
+                    break;
+                }
+            }
+            // matrix = x;
+            for(let i = 0; i< x.length; i++){
+                matrix[i][n] = x[i];
+            }
+        }
+
+        function solve() {
+            const matrixRows = document.getElementById('matrixInput').rows;
+            const n = matrixRows.length;
+
+            const augmentedMatrix = [];
+            for (let i = 0; i < n; i++) {
+                const row = [];
+                for (let j = 0; j <= n; j++) {
+                    const input = matrixRows[i].cells[j].children[0];
+                    row.push(parseFloat(input.value));
+                }
+                augmentedMatrix.push(row);
+            }
+
+            // Perform Jacobi's Method
+            jacobiMethod(augmentedMatrix, n, 10); // You can adjust the number of iterations
+
+            // Display solutions
+            const solutionsDiv = document.getElementById('solutions');
+            solutionsDiv.innerHTML = 'Final Solutions: <br>';
+            for (let i = 0; i < n; i++) {
+                solutionsDiv.innerHTML += `x${i + 1} = ${augmentedMatrix[i][n].toFixed(4)}<br>`;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

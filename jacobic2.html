@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator and Blog</title>
+    <title>Jacobi's Method</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -50,12 +50,15 @@
             padding: 20px;
             overflow-y: auto;
             transition: padding 0.5s;
+            text-align: center;
+            
             /* Add a smooth transition effect */
         }
 
         .calculator {
-
+            
             background-color: #f4f4f4;
+            
         }
 
         .blog {
@@ -127,7 +130,7 @@
     <main>
 
         <section class="calculator" id="calculatorSection">
-            <div>
+            <div >
                 <h2>Jacobi's Method Solver</h2>
                 <p>Enter the number of equations:</p>
                 <input type="text" id="equationCount" placeholder="Enter the number of equations">
@@ -254,9 +257,10 @@
                     const input = matrixRows[i].cells[j].children[0];
                     row.push(parseFloat(input.value));
                 }
+                console.log(row);
                 augmentedMatrix.push(row);
             }
-
+            console.log(augmentedMatrix);
             // Perform Jacobi's Method
             jacobiMethod(augmentedMatrix, n, 10); // You can adjust the number of iterations
 

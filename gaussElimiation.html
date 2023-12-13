@@ -4,55 +4,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaussian Elimination Solver</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Gaussian Elimination</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        main {
+            display: flex;
+            flex: 1;
+            /* overflow-y:scroll; */
+            /* overflow: hidden; */
+            position: relative;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+
+
+        .calculator,
+        .blog {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            transition: padding 0.5s;
+            text-align: center;
+
+            /* Add a smooth transition effect */
+        }
+
+        .calculator {
+
+            background-color: #fcaeae;
+
+        }
+
+        .blog {
+            background-color: #d5fcbf;
+        }
+        .blog-details{
+            text-align: left;
+            background-color: antiquewhite;
+            padding: 10px;
+            border-radius: 15px 15px 0px  0px;
+            box-shadow: 0 0 10px  rgba(215, 53, 2, 1.3);
+            font: 1em sans-serif;
+        }
+        
+        .toggle-btn {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.5s;
+        }
+
+        .toggle-btn.clicked {
+            transform: translateX(-50%);
+        }
+
+        .toggle {
+            display: flex;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #innerStep {
+            border: 1px;
+            border-radius: 10px;
+            background-color: cadetblue;
+            color: rgb(8, 8, 8);
+            padding: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+        #solutionHead{
+            display: none;
+        }
+        #solutions {
+            border: 1px;
+            border-radius: 20px;
+            background-color: rgb(160, 121, 95);
+            color: rgb(8, 8, 8);
+            padding: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
 </head>
 
 <body>
 
-    <div id="app" class="main-display">
-        <!-- calculator -->
+    <header>
+        <h1>Calculator and Blog</h1>
+    </header>
 
-        <div class="calculator">
-            <section class="calculator-div" id="calculatorSection">
-                <div >
-                    <h2>Gaussian Elimination Method Solver</h2>
-                    <p>Enter the number of equations:</p>
-                    <input type="text" id="equationCount" placeholder="Enter the number of equations">
-                    <button onclick="createMatrixInput()">Go</button>
+    <main>
 
-                    <div id="matrixContainer">
-                        <!-- Matrix input fields will be dynamically added here using JavaScript -->
-                    </div>
+        <section class="calculator" id="calculatorSection">
+            <div>
+                <h2>Gaussian Elimination Method Solver</h2>
+                <p>Enter the number of equations:</p>
+                <input type="text" id="equationCount" placeholder="Enter the number of equations">
+                <button onclick="createMatrixInput()">Go</button>
 
-                    <button onclick="solve()">Solve</button>
-
-                    <h3>Solutions:</h3>
-                    <div id="innerStep"></div>
-                    <div id="solutions"></div>
+                <div id="matrixContainer">
+                    <!-- Matrix input fields will be dynamically added here using JavaScript -->
                 </div>
 
-            </section>
-        </div>
+                <button onclick="solve()">Solve</button>
 
-        <!-- toggle -->
+                <div id="solutionHead"><h3>Solutions:</h3></div>
+                <div id="innerStep"></div>
+                <div id="solutions"></div>
+            </div>
+
+        </section>
+
         <button class="toggle-btn" onclick="toggleSections()">Toggle Sections</button>
-        <!-- blog -->
+
+
+
         <section class="blog" id="blogSection">
             <div>
-                <h2>Blog</h2>
+                <h2 class="head-blog">Blog</h2>
                 <!-- Blog content goes here -->
-                <p>Welcome to the blog section! You can share knowledge or theories related to the calculator.</p>
+                <div class="blog-details">
+                    <h1 class="">Understanding Gaussian Elimination: A Step-by-Step Tutorial</h1>
+                    <br>
+                    <h3>Introduction</h3>
+                    <!-- <br> -->
+                    <p>Gaussian Elimination is a powerful method used in linear algebra to solve systems of linear equations. Whether you are a student delving into the world of mathematics or a professional dealing with complex mathematical models, understanding Gaussian Elimination is essential. In this tutorial, we'll explore the fundamental concepts of Gaussian Elimination and guide you through its step-by-step application.</p>
+                </div>
+                
             </div>
 
         </section>
 
 
+    </main>
 
-
-    </div>
+    <footer>
+        <p>&copy; 2023 Your Website</p>
+    </footer>
 
     <script>
+        // js funciton 1: createMatrixInput()
         function createMatrixInput() {
             const equationCountInput = document.getElementById('equationCount');
             const n = parseInt(equationCountInput.value);
@@ -74,14 +209,7 @@
                     const input = document.createElement('input');
                     input.type = 'number';
                     input.step = 'any';
-                    input.style.width = '100px';
-                    if(j < n){
-                         input.placeholder = `a ${i + 1}${j + 1}`;
-                    }
-                    else{
-                        input.placeholder = `|x ${i + 1}${j + 1}`;
-                    }
-                   
+                    input.placeholder = `Element ${i + 1}${j + 1}`;
                     cell.appendChild(input);
                     row.appendChild(cell);
                 }
@@ -91,39 +219,35 @@
             matrixContainer.appendChild(table);
         }
 
-        // gaussian elimination function from here.
+
+        // js funciton 2: gaussianElimination()
         function gaussianElimination(matrix, n) {
-
             const stepDiv = document.getElementById('innerStep');
-
+            stepDiv.innerHTML = ''; // Clear the content before starting
+            innerStep.style.display = 'block';
+            solutionHead.style.display = 'block';
             let stage = 'a';
             for (let i = 0; i < n; i++) {
-                // Partial pivoting to avoid division by small numbers
+                // Partialstyleg to avoid division by small numbers
                 console.log(i);
-                // time start:
-                let time1= new Date().getMilliseconds();
-                
-                console.log(`Time: ${time1}`);
-                stepDiv.innerHTML += ` Step${i + 1}: <br>`;
+
+                // Create a new div for each step
+                const stepContainer = document.createElement('div');
+                stepContainer.innerHTML = ` Step${i + 1}: <br>`;
+
                 for (let i = 0; i < n; i++) {
                     for (let j = 0; j <= n; j++) {
-                        stepDiv.innerHTML += `${matrix[i][j].toFixed(4).padStart(8)} ${stage}${i + 1}${j + 1}   `;
+                        stepContainer.innerHTML += `${matrix[i][j].toFixed(4).padStart(8)} <span style="font-weight: bold; color:#D4AF37">(${stage}${i + 1}${j + 1})</span>   `;
                         let incrementedChar = String.fromCharCode(stage.charCodeAt(0) + 1);
                         stage = incrementedChar;
-                        // console.log(stage);
-                        // stage+=1;
+                        console.log(stage);
                     }
-                    stepDiv.innerHTML += `<br>`;
+                    stepContainer.innerHTML += `<br>`;
                     stage = 'a';
-
-                    // solutionsDiv.innerHTML += `x${i + 1} = ${augmentedMatrix[i][n]}<br>`;
                 }
-                stepDiv.innerHTML += `Step${i + 1} end: <br> <hr>`;
-                // time end;
-                let time2= new Date().getMilliseconds();
-                console.log(`Time1: ${time1}`);
-                console.log(`Time2: ${time2}`);
-                console.log(`Time total: ${time2 - time1}`);
+                stepContainer.innerHTML += `Step${i + 1} end: <br> <hr>`;
+
+                stepDiv.appendChild(stepContainer);
 
                 let maxRow = i;
                 for (let k = i + 1; k < n; k++) {
@@ -155,13 +279,10 @@
                         }
                     }
                 }
-
-
-
             }
         }
-        // gassian elimination function ends here. 
 
+        // js funciton 1: solve()
         function solve() {
             const matrixRows = document.getElementById('matrixInput').rows;
             const n = matrixRows.length;
@@ -173,18 +294,55 @@
                     const input = matrixRows[i].cells[j].children[0];
                     row.push(parseFloat(input.value));
                 }
+                console.log(row);
                 augmentedMatrix.push(row);
             }
+            console.log(augmentedMatrix);
+            // Perform Jacobi's Method
+            gaussianElimination(augmentedMatrix, n); // You can adjust the number of iterations
 
-            // Perform Gaussian elimination (you can reuse the Gaussian elimination function from the previous example here)
-            gaussianElimination(augmentedMatrix, n);
             // Display solutions
+            solutions.style.display = 'block';
             const solutionsDiv = document.getElementById('solutions');
-            solutionsDiv.innerHTML = 'Solutions: <br>';
+            solutionsDiv.innerHTML = 'Final Solutions: <br>';
             for (let i = 0; i < n; i++) {
-                solutionsDiv.innerHTML += `x${i + 1} = ${Math.round(augmentedMatrix[i][n])}<br>`;
+                solutionsDiv.innerHTML += `x${i + 1} = ${augmentedMatrix[i][n].toFixed(4)}<br>`;
             }
-            solutionsDiv.innerHTML += `<br> <hr>`;
+        }
+
+
+        function toggleSections() {
+            const calculatorSection = document.getElementById('calculatorSection');
+            const blogSection = document.getElementById('blogSection');
+            const toggleBtn = document.querySelector('.toggle-btn');
+
+            if (calculatorSection.style.display === 'none' || calculatorSection.style.display === '') {
+                // Show calculator, hide blog
+                calculatorSection.style.display = 'flex';
+                // main.style.display = 'inline-block';
+                blogSection.style.display = 'none';
+                // Adjust padding for a centered look
+                calculatorSection.style.padding = '20px';
+                calculatorSection.style.justifyContent = 'center';
+                calculatorSection.style.alignItems = 'center';
+
+                toggleBtn.style.left = '10%';
+                toggleBtn.innerHTML = 'blog';
+                toggleBtn.style.backgroundColor = 'rgb(199, 81, 245)';
+            } else {
+                // Show blog, hide calculator
+                calculatorSection.style.display = 'none';
+                blogSection.style.display = 'flex';
+                // main.style.display = 'inline-block';
+                // Adjust padding for a centered look
+                blogSection.style.padding = '20px';
+                blogSection.style.justifyContent = 'center';
+                blogSection.style.alignItems = 'center';
+
+                toggleBtn.style.left = '10%';
+                toggleBtn.innerHTML = 'calculator';
+                toggleBtn.style.backgroundColor = 'rgb(4, 136, 255)';
+            }
         }
     </script>
 
