@@ -167,12 +167,29 @@
             <div>
                 <h2 class="head-blog">Blog</h2>
                 <!-- Blog content goes here -->
-                <div class="blog-details">
+                <div class="blog-details" id="blogDetailsID">
                     <h1 class="">Understanding Gaussian Elimination: A Step-by-Step Tutorial</h1>
                     <br>
                     <h3>Introduction</h3>
                     <!-- <br> -->
                     <p>Gaussian Elimination is a powerful method used in linear algebra to solve systems of linear equations. Whether you are a student delving into the world of mathematics or a professional dealing with complex mathematical models, understanding Gaussian Elimination is essential. In this tutorial, we'll explore the fundamental concepts of Gaussian Elimination and guide you through its step-by-step application.</p>
+
+                    <br>
+                    <h3>What is Gaussian Elimination?</h3>
+                    <p>Gaussian Elimination is a systematic technique used to transform a system of linear equations into its row-echelon form, making it easier to find solutions. The method involves a series of elementary row operations performed on an augmented matrix representing the system.</p>
+
+                    <br>
+                    <h3>Step 1: Setting Up the Augmented Matrix</h3>
+                    <p>Let's consider a system of linear equations:
+                        
+                    </p>
+                    <img src="/img/Gaussian_Img1.png" alt="">
+                    <p>The augmented matrix for this system is:</p>
+                    <img src="/img/Gaussian_Img2.png" alt="">
+
+                    <br>
+                    <h3>Step 2: Partial Pivoting</h3>
+                    <p>To avoid numerical errors and make computations more stable, we use partial pivoting. Identify the row with the largest absolute coefficient in the current column and swap it with the current row.</p>
                 </div>
                 
             </div>
@@ -315,6 +332,7 @@
             const calculatorSection = document.getElementById('calculatorSection');
             const blogSection = document.getElementById('blogSection');
             const toggleBtn = document.querySelector('.toggle-btn');
+            const blogDetails = document.getElementById('blogDetailsID');
 
             if (calculatorSection.style.display === 'none' || calculatorSection.style.display === '') {
                 // Show calculator, hide blog
@@ -338,6 +356,9 @@
                 blogSection.style.padding = '20px';
                 blogSection.style.justifyContent = 'center';
                 blogSection.style.alignItems = 'center';
+                blogDetails.style.marginLeft = '15%';
+                blogDetails.style.marginRight = '15%';
+
 
                 toggleBtn.style.left = '10%';
                 toggleBtn.innerHTML = 'calculator';
