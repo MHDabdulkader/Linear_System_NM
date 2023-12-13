@@ -1,0 +1,159 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+main {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    /* overflow: hidden; */
+    position: relative;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    height: 530px;
+    background-color: #c6c3fa;
+
+}
+.main-display{
+    display: flex;
+    height: 100vh;
+    
+    
+}
+.calculator-div{
+    justify-content: center;
+    align-items: center;
+    
+    background-color: yellow;
+}
+
+.link-index {
+
+    padding: 50px;
+    justify-content: center;
+
+    text-align: center;
+    margin: auto;
+    text-decoration: none;
+    background-color: #2980b9;
+    color: black;
+    border: 5px solid black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-weight: 600;
+}
+
+.link-index:hover {
+    /* background-color: #333; */
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    background-color: #2980b9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border: 10px rgb(231, 18, 18);
+}
+
+/* gassian  */
+table {
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+table,
+th,
+td {
+    border: 1px solid #ddd;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: center;
+}
+
+
+
+
+.calculator,
+.blog {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    transition: padding 0.5s;
+    /* Add a smooth transition effect */
+}
+
+.calculator {
+    
+    background-color: #eb2020;
+    /* background-color: #f4f4f4; */
+}
+
+.blog {
+    background-color: #e0e0e0;
+}
+
+.toggle-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+.toggle-btn.clicked {
+    transform: translateX(-50%);
+}
+
+.toggle {
+    display: flex;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#innerStep {
+    border: 1px;
+    border-radius: 10px;
+    background-color: cadetblue;
+    color: rgb(8, 8, 8);
+    padding: 10px;
+    margin-top: 20px;
+    display: none;
+}
+
+#solutions {
+    border: 1px;
+    border-radius: 20px;
+    background-color: rgb(160, 121, 95);
+    color: rgb(8, 8, 8);
+    padding: 10px;
+    margin-top: 20px;
+    display: none;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
