@@ -1,372 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gaussian Elimination</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/Gauss.css" />
+  </head>
 
-        }
-
-        header {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px;
-        }
-
-        main {
-            display: flex;
-            flex: 1;
-            /* overflow-y:scroll; */
-            /* overflow: hidden; */
-            position: relative;
-        }
-
-        table,
-        th,
-        td {
-            border: 1px solid #ddd;
-        }
-
-        th,
-        td {
-            padding: 10px;
-            text-align: center;
-        }
-
-
-        .calculator,
-        .blog {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            transition: padding 0.5s;
-            text-align: center;
-
-            /* Add a smooth transition effect */
-        }
-
-        .calculator {
-
-            background-color: #fcaeae;
-
-        }
-
-        .blog {
-            background-color: #d5fcbf;
-        }
-        .blog-details{
-            text-align: left;
-            background-color: antiquewhite;
-            padding: 10px;
-            border-radius: 15px 15px 0px  0px;
-            box-shadow: 0 0 10px  rgba(215, 53, 2, 1.3);
-            font: 1em sans-serif;
-        }
-        
-        .toggle-btn {
-            position:fixed;
-            bottom: 50px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 10px;
-            background-color: #333;
-            color: white;
-            border: none;
-            cursor: pointer;
-            transition: transform 0.5s;
-        }
-
-        .toggle-btn.clicked {
-            transform: translateX(-50%);
-        }
-
-        .toggle {
-            display: flex;
-        }
-
-        button {
-            margin-top: 20px;
-            padding: 10px;
-            cursor: pointer;
-        }
-
-        #innerStep {
-            border: 1px;
-            border-radius: 10px;
-            background-color: cadetblue;
-            color: rgb(8, 8, 8);
-            padding: 10px;
-            margin-top: 20px;
-            display: none;
-        }
-        #solutionHead{
-            display: none;
-        }
-        #solutions {
-            border: 1px;
-            border-radius: 20px;
-            background-color: rgb(160, 121, 95);
-            color: rgb(8, 8, 8);
-            padding: 10px;
-            margin-top: 20px;
-            display: none;
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px;
-        }
-    </style>
-</head>
-
-<body>
-
+  <body>
     <header>
-        <h1>Calculator and Blog</h1>
+      <h1>Calculator and Blog</h1>
+      <a href="index.html" class="btn btn-primary">Home</a>
     </header>
 
     <main>
+      <section class="calculator" id="calculatorSection">
+        <div>
+          <h2>Gaussian Elimination Method Solver</h2>
+          <p>Enter the number of equations:</p>
+          <div class="row gap-2">
+            <input
+              type="text"
+              id="equationCount"
+              class="form-control col"
+              placeholder="Enter the number of equations"
+            />
+            <button onclick="createMatrixInput()" class="btn btn-primary col-3">
+              Go
+            </button>
+          </div>
 
-        <section class="calculator" id="calculatorSection">
-            <div>
-                <h2>Gaussian Elimination Method Solver</h2>
-                <p>Enter the number of equations:</p>
-                <input type="text" id="equationCount" placeholder="Enter the number of equations">
-                <button onclick="createMatrixInput()">Go</button>
+          <div id="matrixContainer">
+            <!-- Matrix input fields will be dynamically added here using JavaScript -->
+          </div>
 
-                <div id="matrixContainer">
-                    <!-- Matrix input fields will be dynamically added here using JavaScript -->
-                </div>
+          <button onclick="solve()" class="btn btn-primary btn-lg">
+            Solve
+          </button>
 
-                <button onclick="solve()">Solve</button>
+          <div id="solutionHead">
+            <h3>Solutions:</h3>
+          </div>
+          <div id="innerStep"></div>
+          <div id="solutions"></div>
+        </div>
+      </section>
 
-                <div id="solutionHead"><h3>Solutions:</h3></div>
-                <div id="innerStep"></div>
-                <div id="solutions"></div>
-            </div>
+      <button class="toggle-btn" onclick="toggleSections()">
+        Toggle Sections
+      </button>
 
-        </section>
+      <section class="blog" id="blogSection">
+        <div>
+          <h2 class="head-blog">Blog </h2>
+          <!-- Blog content goes here -->
+          <div class="blog-details" id="blogDetailsID">
+            <h1 >
+              Understanding Gaussian Elimination: A Step-by-Step Tutorial
+            </h1>
+            <br />
+            <h3>Introduction</h3>
+            <!-- <br> -->
+            <p>
+              Gaussian Elimination is a powerful method used in linear algebra
+              to solve systems of linear equations. Whether you are a student
+              delving into the world of mathematics or a professional dealing
+              with complex mathematical models, understanding Gaussian
+              Elimination is essential. In this tutorial, we'll explore the
+              fundamental concepts of Gaussian Elimination and guide you through
+              its step-by-step application.
+            </p>
 
-        <button class="toggle-btn" onclick="toggleSections()">Toggle Sections</button>
+            <br />
+            <h3>What is Gaussian Elimination?</h3>
+            <p>
+              Gaussian Elimination is a systematic technique used to transform a
+              system of linear equations into its row-echelon form, making it
+              easier to find solutions. The method involves a series of
+              elementary row operations performed on an augmented matrix
+              representing the system.
+            </p>
 
+            <br />
+            <h3>Step 1: Setting Up the Augmented Matrix</h3>
+            <p>Let's consider a system of linear equations:</p>
+            <img src="/img/Gaussian_Img1.png" alt="" />
+            <p>The augmented matrix for this system is:</p>
+            <img src="/img/Gaussian_Img2.png" alt="" />
 
+            <br />
+            <br />
+            <h3>Step 2: Pivoting</h3>
+            <h6 class="subStepHeading">Pivot Element Selection:</h6>
+            <p>
+              Explain the concept of pivot elements—the leading entry in a row that is used to eliminate entries below it. Visualize the selection process and its importance in simplifying the matrix.
+            </p>
+            <img src="/img/Gaussian_Img3.png" alt="">
+            <br /><br />
+            <h6 class="subStepHeading">Row Operations in Action:</h6>
+            <p>Show animated examples of each row operation. For instance, demonstrate how multiplying a row by a scalar affects the matrix or how adding a multiple of one row to another facilitates elimination.</p>
+            <img src="/img/Gaussian_Img4.png" alt="">
 
-        <section class="blog" id="blogSection">
-            <div>
-                <h2 class="head-blog">Blog</h2>
-                <!-- Blog content goes here -->
-                <div class="blog-details" id="blogDetailsID">
-                    <h1 class="">Understanding Gaussian Elimination: A Step-by-Step Tutorial</h1>
-                    <br>
-                    <h3>Introduction</h3>
-                    <!-- <br> -->
-                    <p>Gaussian Elimination is a powerful method used in linear algebra to solve systems of linear equations. Whether you are a student delving into the world of mathematics or a professional dealing with complex mathematical models, understanding Gaussian Elimination is essential. In this tutorial, we'll explore the fundamental concepts of Gaussian Elimination and guide you through its step-by-step application.</p>
-
-                    <br>
-                    <h3>What is Gaussian Elimination?</h3>
-                    <p>Gaussian Elimination is a systematic technique used to transform a system of linear equations into its row-echelon form, making it easier to find solutions. The method involves a series of elementary row operations performed on an augmented matrix representing the system.</p>
-
-                    <br>
-                    <h3>Step 1: Setting Up the Augmented Matrix</h3>
-                    <p>Let's consider a system of linear equations:
-                        
-                    </p>
-                    <img src="/img/Gaussian_Img1.png" alt="">
-                    <p>The augmented matrix for this system is:</p>
-                    <img src="/img/Gaussian_Img2.png" alt="">
-
-                    <br>
-                    <h3>Step 2: Partial Pivoting</h3>
-                    <p>To avoid numerical errors and make computations more stable, we use partial pivoting. Identify the row with the largest absolute coefficient in the current column and swap it with the current row.</p>
-                </div>
-                
-            </div>
-
-        </section>
-
-
+            <br><br>
+            <h3>Step 3: Back Substitution:</h3>
+            <h6 class="subStepHeading">Reduced Row-Echelon Form:</h6>
+            <p>Define reduced row-echelon form and illustrate how to achieve it through further row operations. This is the form where the matrix becomes an upper triangular form with 1s along the main diagonal.</p>
+            <img src="/img/Gaussian_Img5.png" alt="">
+            <br><br>
+            <h6 class="subStepHeading">Solving for Variables:</h6>
+            <p>Explain the process of back substitution using the reduced row-echelon form. Visualize how the values of variables are determined systematically.</p>
+            <img src="/img/Gaussian_Img6.png" alt="" width="100%">
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer>
-        <p>&copy; 2023 Your Website</p>
+      <p>&copy; 2023 Your Website</p>
     </footer>
 
-    <script>
-        // js funciton 1: createMatrixInput()
-        function createMatrixInput() {
-            const equationCountInput = document.getElementById('equationCount');
-            const n = parseInt(equationCountInput.value);
-            if (isNaN(n) || n <= 0) {
-                alert('Please enter a valid number of equations.');
-                return;
-            }
-
-            const matrixContainer = document.getElementById('matrixContainer');
-            matrixContainer.innerHTML = '';
-
-            const table = document.createElement('table');
-            table.id = 'matrixInput';
-
-            for (let i = 0; i < n; i++) {
-                const row = document.createElement('tr');
-                for (let j = 0; j <= n; j++) {
-                    const cell = document.createElement('td');
-                    const input = document.createElement('input');
-                    input.type = 'number';
-                    input.step = 'any';
-                    input.placeholder = `Element ${i + 1}${j + 1}`;
-                    cell.appendChild(input);
-                    row.appendChild(cell);
-                }
-                table.appendChild(row);
-            }
-
-            matrixContainer.appendChild(table);
-        }
-
-
-        // js funciton 2: gaussianElimination()
-        function gaussianElimination(matrix, n) {
-            const stepDiv = document.getElementById('innerStep');
-            stepDiv.innerHTML = ''; // Clear the content before starting
-            innerStep.style.display = 'block';
-            solutionHead.style.display = 'block';
-            let stage = 'a';
-            for (let i = 0; i < n; i++) {
-                // Partialstyleg to avoid division by small numbers
-                console.log(i);
-
-                // Create a new div for each step
-                const stepContainer = document.createElement('div');
-                stepContainer.innerHTML = ` Step${i + 1}: <br>`;
-
-                for (let i = 0; i < n; i++) {
-                    for (let j = 0; j <= n; j++) {
-                        stepContainer.innerHTML += `${matrix[i][j].toFixed(4).padStart(8)} <span style="font-weight: bold; color:#D4AF37">(${stage}${i + 1}${j + 1})</span>   `;
-                        let incrementedChar = String.fromCharCode(stage.charCodeAt(0) + 1);
-                        stage = incrementedChar;
-                        console.log(stage);
-                    }
-                    stepContainer.innerHTML += `<br>`;
-                    stage = 'a';
-                }
-                stepContainer.innerHTML += `Step${i + 1} end: <br> <hr>`;
-
-                stepDiv.appendChild(stepContainer);
-
-                let maxRow = i;
-                for (let k = i + 1; k < n; k++) {
-                    if (Math.abs(matrix[k][i]) > Math.abs(matrix[maxRow][i])) {
-                        maxRow = k;
-                    }
-                }
-
-                [matrix[i], matrix[maxRow]] = [matrix[maxRow], matrix[i]];
-
-                // Make the diagonal element 1
-                const pivot = matrix[i][i];
-                if (Math.abs(pivot) < 0.0005) {
-                    // Matrix is singular or nearly singular
-                    console.log("Matrix is singular or nearly singular.");
-                    return;
-                }
-
-                for (let j = i; j <= n; j++) {
-                    matrix[i][j] /= pivot;
-                }
-
-                // Make other elements in the column zero
-                for (let k = 0; k < n; k++) {
-                    if (k !== i) {
-                        const factor = matrix[k][i];
-                        for (let j = i; j <= n; j++) {
-                            matrix[k][j] -= factor * matrix[i][j];
-                        }
-                    }
-                }
-            }
-        }
-
-        // js funciton 1: solve()
-        function solve() {
-            const matrixRows = document.getElementById('matrixInput').rows;
-            const n = matrixRows.length;
-
-            const augmentedMatrix = [];
-            for (let i = 0; i < n; i++) {
-                const row = [];
-                for (let j = 0; j <= n; j++) {
-                    const input = matrixRows[i].cells[j].children[0];
-                    row.push(parseFloat(input.value));
-                }
-                console.log(row);
-                augmentedMatrix.push(row);
-            }
-            console.log(augmentedMatrix);
-            // Perform Jacobi's Method
-            gaussianElimination(augmentedMatrix, n); // You can adjust the number of iterations
-
-            // Display solutions
-            solutions.style.display = 'block';
-            const solutionsDiv = document.getElementById('solutions');
-            solutionsDiv.innerHTML = 'Final Solutions: <br>';
-            for (let i = 0; i < n; i++) {
-                solutionsDiv.innerHTML += `x${i + 1} = ${augmentedMatrix[i][n].toFixed(4)}<br>`;
-            }
-        }
-
-
-        function toggleSections() {
-            const calculatorSection = document.getElementById('calculatorSection');
-            const blogSection = document.getElementById('blogSection');
-            const toggleBtn = document.querySelector('.toggle-btn');
-            const blogDetails = document.getElementById('blogDetailsID');
-
-            if (calculatorSection.style.display === 'none' || calculatorSection.style.display === '') {
-                // Show calculator, hide blog
-                calculatorSection.style.display = 'flex';
-                // main.style.display = 'inline-block';
-                blogSection.style.display = 'none';
-                // Adjust padding for a centered look
-                calculatorSection.style.padding = '20px';
-                calculatorSection.style.justifyContent = 'center';
-                calculatorSection.style.alignItems = 'center';
-
-                toggleBtn.style.left = '10%';
-                toggleBtn.innerHTML = 'blog';
-                toggleBtn.style.backgroundColor = 'rgb(199, 81, 245)';
-            } else {
-                // Show blog, hide calculator
-                calculatorSection.style.display = 'none';
-                blogSection.style.display = 'flex';
-                // main.style.display = 'inline-block';
-                // Adjust padding for a centered look
-                blogSection.style.padding = '20px';
-                blogSection.style.justifyContent = 'center';
-                blogSection.style.alignItems = 'center';
-                blogDetails.style.marginLeft = '15%';
-                blogDetails.style.marginRight = '15%';
-
-
-                toggleBtn.style.left = '10%';
-                toggleBtn.innerHTML = 'calculator';
-                toggleBtn.style.backgroundColor = 'rgb(4, 136, 255)';
-            }
-        }
-    </script>
-
-</body>
-
+    <script src="./Js/Gauss.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

@@ -5,6 +5,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
+
 }
 
 header {
@@ -15,52 +16,11 @@ header {
 }
 
 main {
-    display: flex;
+    
     flex: 1;
+    /* overflow-y: auto; */
     /* overflow: hidden; */
-
-    justify-content: space-around;
-    flex-wrap: nowrap;
-    height: 80vh;
-    background-color: #d8d7e9;
-}
-
-.main-display {
-    display: flex;
-    height: 100vh;
-}
-
-.link-index {
-    width: 300px;
-    height: 300px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 36px;
-    text-align: center;
-    margin: auto;
-    color: #2980b9;
-    text-decoration: none;
-    background-color: white;
-    border-radius: 15px;
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
-    font-weight: 600;
-}
-
-.link-index:hover {
-    /* background-color: #333; */
-    color: white;
-    cursor: pointer;
-    font-weight: 600;
-    background-color: #2980b9;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    border: 10px rgb(231, 18, 18);
-}
-
-/* gassian  */
-table {
-    margin-top: 20px;
-    border-collapse: collapse;
+    position: relative;
 }
 
 table,
@@ -80,14 +40,19 @@ td {
     flex: 1;
     padding: 20px;
     overflow-y: auto;
-    transition: padding 0.5s;
+    word-wrap: normal;
+    transition: padding 0.5s; /* Add smooth transition effect to padding */
     text-align: center;
-    /* Add a smooth transition effect */
+    /* max-width: 50%; */
 }
 
 .calculator {
-    background-color: #eb2020;
-    /* background-color: #f4f4f4; */
+    /* position: fixed; */
+    height: max-content;
+    /* scroll-margin-block:; */
+    background-color: #f4f4f4;
+    /* background-color: #9b7a7a; */
+
 }
 
 .blog {
@@ -96,8 +61,9 @@ td {
 
 .toggle-btn {
     position: absolute;
-    bottom: 10px;
+    bottom: 50px;
     left: 50%;
+    position: fixed;
     transform: translateX(-50%);
     padding: 10px;
     background-color: #333;
@@ -120,8 +86,13 @@ button {
     padding: 10px;
     cursor: pointer;
 }
-
-#innerStep {
+#solutionHead1 {
+    display: none;
+}
+#solutionHead2 {
+    display: none;
+}
+#innerStep1 {
     border: 1px;
     border-radius: 10px;
     background-color: cadetblue;
@@ -130,10 +101,26 @@ button {
     margin-top: 20px;
     display: none;
 }
-.Compair-mainDiv{
-    flex: 1;
+#innerStep2 {
+    border: 1px;
+    border-radius: 10px;
+    background-color: cadetblue;
+    color: rgb(8, 8, 8);
+    padding: 10px;
+    margin-top: 20px;
+    display: none;
 }
-#solutions {
+
+#solutions1 {
+    border: 1px;
+    border-radius: 20px;
+    background-color: rgb(160, 121, 95);
+    color: rgb(8, 8, 8);
+    padding: 10px;
+    margin-top: 20px;
+    display: none;
+}
+#solutions2 {
     border: 1px;
     border-radius: 20px;
     background-color: rgb(160, 121, 95);
@@ -143,9 +130,27 @@ button {
     display: none;
 }
 
+.blog-details {
+    text-align: left;
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 15px 15px 0px 0px;
+    /* box-shadow: 0 0 10px rgba(215, 53, 2, 1.3); */
+    font: 1em sans-serif;
+}
+.subStepHeading{
+    font-weight: bold;
+}
 footer {
     background-color: #333;
     color: white;
     text-align: center;
     padding: 10px;
+}
+.CompairMainDiv{
+    display: flex;
+    flex: 1;
+    /* overflow-y: auto; */
+    /* overflow: hidden; */
+    /* position: relative; */
 }

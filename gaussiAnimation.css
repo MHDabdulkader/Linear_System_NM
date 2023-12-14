@@ -1,0 +1,14 @@
+#matrix-container {
+    margin: 20px;
+}
+
+.cell {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #000;
+    margin: 2px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 14px;
+}
