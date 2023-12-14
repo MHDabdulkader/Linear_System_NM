@@ -17,50 +17,11 @@ header {
 main {
     display: flex;
     flex: 1;
+    
+    /* overflow:auto; */
+    /* overflow-y:auto; */
     /* overflow: hidden; */
-
-    justify-content: space-around;
-    flex-wrap: nowrap;
-    height: 80vh;
-    background-color: #d8d7e9;
-}
-
-.main-display {
-    display: flex;
-    height: 100vh;
-}
-
-.link-index {
-    width: 300px;
-    height: 300px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 36px;
-    text-align: center;
-    margin: auto;
-    color: #2980b9;
-    text-decoration: none;
-    background-color: white;
-    border-radius: 15px;
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
-    font-weight: 600;
-}
-
-.link-index:hover {
-    /* background-color: #333; */
-    color: white;
-    cursor: pointer;
-    font-weight: 600;
-    background-color: #2980b9;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    border: 10px rgb(231, 18, 18);
-}
-
-/* gassian  */
-table {
-    margin-top: 20px;
-    border-collapse: collapse;
+    position: relative;
 }
 
 table,
@@ -79,24 +40,36 @@ td {
 .blog {
     flex: 1;
     padding: 20px;
-    overflow-y: auto;
+    
     transition: padding 0.5s;
     text-align: center;
+
     /* Add a smooth transition effect */
 }
 
 .calculator {
-    background-color: #eb2020;
-    /* background-color: #f4f4f4; */
+    /* overflow-y: auto; */
+    /* position: fixed; */
+    background-color: #faf5f5;
 }
 
 .blog {
-    background-color: #e0e0e0;
+    /* overflow-y: auto; */
+    background-color: #dce0d9;
+}
+
+.blog-details {
+    text-align: left;
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 15px 15px 0px 0px;
+    /* box-shadow: 0 0 10px rgba(215, 53, 2, 1.3); */
+    font: 1em sans-serif;
 }
 
 .toggle-btn {
-    position: absolute;
-    bottom: 10px;
+    position: fixed;
+    bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
     padding: 10px;
@@ -130,9 +103,11 @@ button {
     margin-top: 20px;
     display: none;
 }
-.Compair-mainDiv{
-    flex: 1;
+
+#solutionHead {
+    display: none;
 }
+
 #solutions {
     border: 1px;
     border-radius: 20px;
@@ -142,7 +117,40 @@ button {
     margin-top: 20px;
     display: none;
 }
+.subStepHeading{
+    font-weight: bold;
+}
+.link-index {
+    width: max-content;
+    height: 90px;
+    padding: 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    text-align: center;
+    margin: auto;
+    color: white;
+    
+    text-decoration: none;background-color: #2980b9;
+   
+    border-radius: 15px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
+    font-weight: 600;
+}
 
+.solveBtn{
+    display: none;
+}
+.link-index:hover {
+    /* background-color: #333; */
+    color: #2980b9;
+    cursor: pointer;
+    font-weight: 600;
+     background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border: 10px rgb(231, 18, 18);
+}
 footer {
     background-color: #333;
     color: white;

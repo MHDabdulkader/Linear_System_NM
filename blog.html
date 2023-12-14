@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gaussian Elimination</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/Gauss.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1>Calculator and Blog</h1>
+      <a href="index.html" class="btn btn-primary">Home</a>
+    </header>
+
+    <main>
+        <section class="blog" id="blogSection2">
+            <div>
+              <h2 class="head-blog">Blog </h2>
+              <!-- Blog content goes here -->
+              <div class="blog-details" id="blogDetailsID">
+                <h1 >
+                  Understanding Gaussian Elimination: A Step-by-Step Tutorial
+                </h1>
+                <br />
+                <h3>Introduction</h3>
+                <!-- <br> -->
+                <p>
+                  Gaussian Elimination is a powerful method used in linear algebra
+                  to solve systems of linear equations. Whether you are a student
+                  delving into the world of mathematics or a professional dealing
+                  with complex mathematical models, understanding Gaussian
+                  Elimination is essential. In this tutorial, we'll explore the
+                  fundamental concepts of Gaussian Elimination and guide you through
+                  its step-by-step application.
+                </p>
+    
+                <br />
+                <h3>What is Gaussian Elimination?</h3>
+                <p>
+                  Gaussian Elimination is a systematic technique used to transform a
+                  system of linear equations into its row-echelon form, making it
+                  easier to find solutions. The method involves a series of
+                  elementary row operations performed on an augmented matrix
+                  representing the system.
+                </p>
+    
+                <br />
+                <h3>Step 1: Setting Up the Augmented Matrix</h3>
+                <p>Let's consider a system of linear equations:</p>
+                <img src="/img/Gaussian_Img1.png" alt="" />
+                <p>The augmented matrix for this system is:</p>
+                <img src="/img/Gaussian_Img2.png" alt="" />
+    
+                <br />
+                <br />
+                <h3>Step 2: Pivoting</h3>
+                <h6 class="subStepHeading">Pivot Element Selection:</h6>
+                <p>
+                  Explain the concept of pivot elements—the leading entry in a row that is used to eliminate entries below it. Visualize the selection process and its importance in simplifying the matrix.
+                </p>
+                <img src="/img/Gaussian_Img3.png" alt="">
+                <br /><br />
+                <h6 class="subStepHeading">Row Operations in Action:</h6>
+                <p>Show animated examples of each row operation. For instance, demonstrate how multiplying a row by a scalar affects the matrix or how adding a multiple of one row to another facilitates elimination.</p>
+                <img src="/img/Gaussian_Img4.png" alt="">
+    
+                <br><br>
+                <h3>Step 3: Back Substitution:</h3>
+                <h6 class="subStepHeading">Reduced Row-Echelon Form:</h6>
+                <p>Define reduced row-echelon form and illustrate how to achieve it through further row operations. This is the form where the matrix becomes an upper triangular form with 1s along the main diagonal.</p>
+                <img src="/img/Gaussian_Img5.png" alt="">
+                <br><br>
+                <h6 class="subStepHeading">Solving for Variables:</h6>
+                <p>Explain the process of back substitution using the reduced row-echelon form. Visualize how the values of variables are determined systematically.</p>
+                <img src="/img/Gaussian_Img6.png" alt="" width="100%">
+              </div>
+            </div>
+          </section>
+
+      <button class="toggle-btn" onclick="toggleSections()">
+        Toggle Sections
+      </button>
+
+      <section class="blog" id="blogSection">
+        <div>
+          <h2 class="head-blog">Blog </h2>
+          <!-- Blog content goes here -->
+          <div class="blog-details" id="blogDetailsID">
+            <h1>
+              Understanding Jacobi Iterative Method
+              A Step-by-Step Tutorial
+            </h1>
+            <br />
+            <h3>Introduction</h3>
+            <!-- <br> -->
+            <p>
+              Jacobian method or Jacobi method is one the iterative methods for approximating the solution of a system of
+              n linear equations in n variables. The Jacobi iterative method is considered as an iterative algorithm which
+              is used for determining the solutions for the system of linear equations in numerical linear algebra, which
+              is diagonally dominant. In this method, an approximate value is filled in for each diagonal element. Until
+              it converges, the process is iterated. This algorithm was first called the Jacobi transformation process of
+              matrix diagonalization. Jacobi Method is also known as the simultaneous displacement method..
+            </p>
+  
+            <br />
+            <h3>Jacobi Iterative Method</h3>
+            <h6 class="subStepHeading">Assumption 1: </h6>
+            <p>
+              The given system of equations has a unique solution.
+            </p>
+            <img src="/img/Jacobian-method-1.png" alt="" />
+            <br />
+  
+  
+            <h6 class="subStepHeading">Assumption 2: </h6>
+            <p>The coefficient matrix A has no zeros on its main diagonal, namely, a11, a22,…, ann, are non-zeros
+  
+              If any of the diagonal entries a11, a22,…, ann are zero, then we should interchange the rows or columns to
+              obtain a coefficient matrix that has nonzero entries on the main diagonal. Follow the steps given below to
+              get the solution of a given system of equations.</p>
+  
+              <!-- step 1 start -->
+              <h6 class="subStepHeading">Step 1: </h6>
+              <p>In this method, we must solve the equations to obtain the values x1, x2,…. xn.
+  
+                To get the value of x1, solve the first equation using the formula given below:</p>
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                  <mtable columnalign="left" columnspacing="1em" rowspacing="4pt">
+                    <mtr>
+                      <mtd>
+                        <msub>
+                          <mi>x</mi>
+                          <mrow data-mjx-texclass="ORD">
+                            <mn>1</mn>
+                          </mrow>
+                        </msub>
+                        <mo>=</mo>
+                        <mfrac>
+                          <mn>1</mn>
+                          <msub>
+                            <mi>a</mi>
+                            <mrow data-mjx-texclass="ORD">
+                              <mn>11</mn>
+                            </mrow>
+                          </msub>
+                        </mfrac>
+                        <mo stretchy="false">(</mo>
+                        <msub>
+                          <mi>b</mi>
+                          <mn>1</mn>
+                        </msub>
+                        <mo>&#x2212;</mo>
+                        <msub>
+                          <mi>a</mi>
+                          <mrow data-mjx-texclass="ORD">
+                            <mn>12</mn>
+                          </mrow>
+                        </msub>
+                        <msub>
+                          <mi>x</mi>
+                          <mn>2</mn>
+                        </msub>
+                        <mo>&#x2212;</mo>
+                        <msub>
+                          <mi>a</mi>
+                          <mrow data-mjx-texclass="ORD">
+                            <mn>13</mn>
+                          </mrow>
+                        </msub>
+                        <msub>
+                          <mi>x</mi>
+                          <mn>3</mn>
+                        </msub>
+                        <mo>&#x2212;</mo>
+                        <mo>&#x2026;</mo>
+                        <mo>&#x2212;</mo>
+                        <msub>
+                          <mi>a</mi>
+                          <mrow data-mjx-texclass="ORD">
+                            <mn>1</mn>
+                            <mi>n</mi>
+                          </mrow>
+                        </msub>
+                        <msub>
+                          <mi>x</mi>
+                          <mi>n</mi>
+                        </msub>
+                        <mo stretchy="false">)</mo>
+                        <mo>&#x2026;</mo>
+                        <mo>.</mo>
+                        <mo>.</mo>
+                        <mo stretchy="false">(</mo>
+                        <mn>1</mn>
+                        <mo stretchy="false">)</mo>
+                      </mtd>
+                    </mtr>
+                  </mtable>
+                </math>
+  
+              <p>To get the value of x2, solve the second equation using the formulas as:</p>
+              <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mtable columnalign="left" columnspacing="1em" rowspacing="4pt">
+                  <mtr>
+                    <mtd>
+                      <msub>
+                        <mi>x</mi>
+                        <mrow data-mjx-texclass="ORD">
+                          <mn>2</mn>
+                        </mrow>
+                      </msub>
+                      <mo>=</mo>
+                      <mfrac>
+                        <mn>1</mn>
+                        <msub>
+                          <mi>a</mi>
+                          <mrow data-mjx-texclass="ORD">
+                            <mn>22</mn>
+                          </mrow>
+                        </msub>
+                      </mfrac>
+                      <mo stretchy="false">(</mo>
+                      <msub>
+                        <mi>b</mi>
+                        <mn>2</mn>
+                      </msub>
+                      <mo>&#x2212;</mo>
+                      <msub>
+                        <mi>a</mi>
+                        <mrow data-mjx-texclass="ORD">
+                          <mn>21</mn>
+                        </mrow>
+                      </msub>
+                      <msub>
+                        <mi>x</mi>
+                        <mn>2</mn>
+                      </msub>
+                      <mo>&#x2212;</mo>
+                      <msub>
+                        <mi>a</mi>
+                        <mrow data-mjx-texclass="ORD">
+                          <mn>23</mn>
+                        </mrow>
+                      </msub>
+                      <msub>
+                        <mi>x</mi>
+                        <mn>3</mn>
+                      </msub>
+                      <mo>&#x2212;</mo>
+                      <mo>&#x2026;</mo>
+                      <mo>&#x2212;</mo>
+                      <msub>
+                        <mi>a</mi>
+                        <mrow data-mjx-texclass="ORD">
+                          <mn>2</mn>
+                          <mi>n</mi>
+                        </mrow>
+                      </msub>
+                      <msub>
+                        <mi>x</mi>
+                        <mi>n</mi>
+                      </msub>
+                      <mo stretchy="false">)</mo>
+                      <mo>&#x2026;</mo>
+                      <mo>&#x2026;</mo>
+                      <mo stretchy="false">(</mo>
+                      <mn>2</mn>
+                      <mo stretchy="false">)</mo>
+                    </mtd>
+                  </mtr>
+                </mtable>
+              </math>
+  
+              <p>Similarly, to find the value of xn, solve the nth equation.</p>
+              <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mtable columnalign="left" columnspacing="1em" rowspacing="4pt">
+                  <mtr>
+                    <mtd>
+                      <msub>
+                        <mi>x</mi>
+                        <mrow data-mjx-texclass="ORD">
+                          <mi>n</mi>
+                        </mrow>
+                      </msub>
+                      <mo>=</mo>
+                      <mfrac>
+                        <mn>1</mn>
+                        <msub>
+                          <mi>a</mi>
+                          <mrow data-mjx-texclass="ORD">
+                            <mi>n</mi>
+                            <mi>n</mi>
+                          </mrow>
+                        </msub>
+                      </mfrac>
+                      <mo stretchy="false">(</mo>
+                      <msub>
+                        <mi>b</mi>
+                        <mi>n</mi>
+                      </msub>
+                      <mo>&#x2212;</mo>
+                      <msub>
+                        <mi>a</mi>
+                        <mrow data-mjx-texclass="ORD">
+                          <mi>n</mi>
+                          <mn>1</mn>
+                        </mrow>
+                      </msub>
+                      <msub>
+                        <mi>x</mi>
+                        <mn>2</mn>
+                      </msub>
+                      <mo>&#x2212;</mo>
+                      <msub>
+                        <mi>a</mi>
+                        <mrow data-mjx-texclass="ORD">
+                          <mi>n</mi>
+                          <mn>2</mn>
+                        </mrow>
+                      </msub>
+                      <msub>
+                        <mi>x</mi>
+                        <mn>3</mn>
+                      </msub>
+                      <mo>&#x2212;</mo>
+                      <mo>&#x2026;</mo>
+                      <mo>&#x2212;</mo>
+                      <msub>
+                        <mi>a</mi>
+                        <mrow data-mjx-texclass="ORD">
+                          <mi>n</mi>
+                          <mo>,</mo>
+                          <mi>n</mi>
+                          <mo>&#x2212;</mo>
+                          <mn>1</mn>
+                        </mrow>
+                      </msub>
+                      <msub>
+                        <mi>x</mi>
+                        <mrow data-mjx-texclass="ORD">
+                          <mi>n</mi>
+                          <mo>&#x2212;</mo>
+                          <mn>1</mn>
+                        </mrow>
+                      </msub>
+                      <mo stretchy="false">)</mo>
+                      <mo>&#x2026;</mo>
+                      <mo>&#x2026;</mo>
+                      <mo stretchy="false">(</mo>
+                      <mi>n</mi>
+                      <mo stretchy="false">)</mo>
+                    </mtd>
+                  </mtr>
+                </mtable>
+              </math>
+              <!-- step 1 end -->
+  
+              <br><br>
+              <h6 class="subStepHeading">Step 2: </h6>
+              <p>Now, we have to make the initial guess of the solution as:</p>
+              <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mtable columnalign="left" columnspacing="1em" rowspacing="4pt">
+                  <mtr>
+                    <mtd>
+                      <msup>
+                        <mi>x</mi>
+                        <mrow data-mjx-texclass="ORD">
+                          <mo stretchy="false">(</mo>
+                          <mn>0</mn>
+                          <mo stretchy="false">)</mo>
+                        </mrow>
+                      </msup>
+                      <mo>=</mo>
+                      <mo stretchy="false">(</mo>
+                      <msubsup>
+                        <mi>x</mi>
+                        <mrow data-mjx-texclass="ORD">
+                          <mn>1</mn>
+                        </mrow>
+                        <mrow data-mjx-texclass="ORD">
+                          <mo stretchy="false">(</mo>
+                          <mn>0</mn>
+                          <mo stretchy="false">)</mo>
+                        </mrow>
+                      </msubsup>
+                      <mo>,</mo>
+                      <msubsup>
+                        <mi>x</mi>
+                        <mrow data-mjx-texclass="ORD">
+                          <mn>2</mn>
+                        </mrow>
+                        <mrow data-mjx-texclass="ORD">
+                          <mo stretchy="false">(</mo>
+                          <mn>0</mn>
+                          <mo stretchy="false">)</mo>
+                        </mrow>
+                      </msubsup>
+                      <mo>,</mo>
+                      <msubsup>
+                        <mi>x</mi>
+                        <mrow data-mjx-texclass="ORD">
+                          <mn>3</mn>
+                        </mrow>
+                        <mrow data-mjx-texclass="ORD">
+                          <mo stretchy="false">(</mo>
+                          <mn>0</mn>
+                          <mo stretchy="false">)</mo>
+                        </mrow>
+                      </msubsup>
+                      <mo>,</mo>
+                      <mo>&#x2026;</mo>
+                      <mo>,</mo>
+                      <msubsup>
+                        <mi>x</mi>
+                        <mrow data-mjx-texclass="ORD">
+                          <mi>n</mi>
+                        </mrow>
+                        <mrow data-mjx-texclass="ORD">
+                          <mo stretchy="false">(</mo>
+                          <mn>0</mn>
+                          <mo stretchy="false">)</mo>
+                        </mrow>
+                      </msubsup>
+                      <mo stretchy="false">)</mo>
+                    </mtd>
+                  </mtr>
+                </mtable>
+              </math>
+              <!-- step 2 end -->
+  
+              <br><br>
+              <h6 class="subStepHeading">Step 3: </h6>
+              <p>Substitute the values obtained in the previous step in equation (1), i.e., into the right hand side the of the rewritten equations in step (1) to obtain the first approximation as:</p>
+              <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mtable columnalign="left" columnspacing="1em" rowspacing="4pt">
+                  <mtr>
+                    <mtd>
+                      <mo stretchy="false">(</mo>
+                      <msubsup>
+                        <mi>x</mi>
+                        <mrow data-mjx-texclass="ORD">
+                          <mn>1</mn>
+                        </mrow>
+                        <mrow data-mjx-texclass="ORD">
+                          <mo stretchy="false">(</mo>
+                          <mn>1</mn>
+                          <mo stretchy="false">)</mo>
+                        </mrow>
+                      </msubsup>
+                      <mo>,</mo>
+                      <msubsup>
+                        <mi>x</mi>
+                        <mrow data-mjx-texclass="ORD">
+                          <mn>2</mn>
+                        </mrow>
+                        <mrow data-mjx-texclass="ORD">
+                          <mo stretchy="false">(</mo>
+                          <mn>1</mn>
+                          <mo stretchy="false">)</mo>
+                        </mrow>
+                      </msubsup>
+                      <mo>,</mo>
+                      <msubsup>
+                        <mi>x</mi>
+                        <mrow data-mjx-texclass="ORD">
+                          <mn>3</mn>
+                        </mrow>
+                        <mrow data-mjx-texclass="ORD">
+                          <mo stretchy="false">(</mo>
+                          <mn>1</mn>
+                          <mo stretchy="false">)</mo>
+                        </mrow>
+                      </msubsup>
+                      <mo>,</mo>
+                      <mo>&#x2026;</mo>
+                      <mo>,</mo>
+                      <msubsup>
+                        <mi>x</mi>
+                        <mrow data-mjx-texclass="ORD">
+                          <mi>n</mi>
+                        </mrow>
+                        <mrow data-mjx-texclass="ORD">
+                          <mo stretchy="false">(</mo>
+                          <mn>1</mn>
+                          <mo stretchy="false">)</mo>
+                        </mrow>
+                      </msubsup>
+                      <mo stretchy="false">)</mo>
+                    </mtd>
+                  </mtr>
+                </mtable>
+              </math>
+  
+              <h6 class="subStepHeading">Step 4: </h6>
+              <p> In the same way as done in the previous step, compute</p>
+              <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mtable columnalign="left" columnspacing="1em" rowspacing="4pt">
+                  <mtr>
+                    <mtd>
+                      <msup>
+                        <mi>x</mi>
+                        <mrow data-mjx-texclass="ORD">
+                          <mi>k</mi>
+                        </mrow>
+                      </msup>
+                      <mo>=</mo>
+                      <mo stretchy="false">(</mo>
+                      <msubsup>
+                        <mi>x</mi>
+                        <mrow data-mjx-texclass="ORD">
+                          <mn>1</mn>
+                        </mrow>
+                        <mrow data-mjx-texclass="ORD">
+                          <mo stretchy="false">(</mo>
+                          <mi>k</mi>
+                          <mo stretchy="false">)</mo>
+                        </mrow>
+                      </msubsup>
+                      <mo>,</mo>
+                      <msubsup>
+                        <mi>x</mi>
+                        <mrow data-mjx-texclass="ORD">
+                          <mn>2</mn>
+                        </mrow>
+                        <mrow data-mjx-texclass="ORD">
+                          <mo stretchy="false">(</mo>
+                          <mi>k</mi>
+                          <mo stretchy="false">)</mo>
+                        </mrow>
+                      </msubsup>
+                      <mo>,</mo>
+                      <msubsup>
+                        <mi>x</mi>
+                        <mrow data-mjx-texclass="ORD">
+                          <mn>3</mn>
+                        </mrow>
+                        <mrow data-mjx-texclass="ORD">
+                          <mo stretchy="false">(</mo>
+                          <mi>k</mi>
+                          <mo stretchy="false">)</mo>
+                        </mrow>
+                      </msubsup>
+                      <mo>,</mo>
+                      <mo>&#x2026;</mo>
+                      <mo>,</mo>
+                      <msubsup>
+                        <mi>x</mi>
+                        <mrow data-mjx-texclass="ORD">
+                          <mi>n</mi>
+                        </mrow>
+                        <mrow data-mjx-texclass="ORD">
+                          <mo stretchy="false">(</mo>
+                          <mi>k</mi>
+                          <mo stretchy="false">)</mo>
+                        </mrow>
+                      </msubsup>
+                      <mo stretchy="false">)</mo>
+                      <mo>;</mo>
+                      <mtext>&#xA0;</mtext>
+                      <mi>k</mi>
+                      <mo>=</mo>
+                      <mn>1</mn>
+                      <mo>,</mo>
+                      <mn>2</mn>
+                      <mo>,</mo>
+                      <mn>3</mn>
+                      <mo>&#x2026;</mo>
+                      <mo>.</mo>
+                    </mtd>
+                  </mtr>
+                </mtable>
+              </math>
+  
+              <br><br>
+              <h3>Jacobian Method in Matrix Form</h3>
+              <p>Let the n system of linear equations be Ax = b.
+  
+                Here,</p>
+                <img src="/img/Jacobian-method-2.png" alt="">
+  
+  
+              <p>Let us decompose matrix A into a diagonal component D and remainder R such that A = D + R.</p>
+              <img src="/img/Jacobian-method-3.png" alt="">
+              <p>Iteratively the solution will be obtained using the below equation.</p>
+              <img src="/img/Jacobian-method-4.png" alt="">
+              <img src="/img/Jacobian-method-5.png" alt="">
+  
+              <h6 class="subStepHeading">Example: </h6>
+              <img src="/img/Jacobian-method-6.png" alt="" width="90%">
+              <h6 class="subStepHeading">Solution: </h6>
+              <img src="/img/Jacobian-method-9.png" alt="" width="90%">
+              <img src="/img/Jacobian-method-8.png" alt="" width="90%">
+              <img src="/img/Jacobian-method-10.png" alt="" width="90%">
+  
+  
+              <h6 class="subStepHeading">Solution: </h6>
+              <img src="/img/Jacobian-method-9.png" alt=""  width="90%">
+              <img src="/img/Jacobian-method-8.png" alt=""   width="90%">
+              <img src="/img/Jacobian-method-10.png" alt=""  width="90%">
+  
+  
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2023 Your Website</p>
+    </footer>
+
+    <script src="./Js/Blog.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
